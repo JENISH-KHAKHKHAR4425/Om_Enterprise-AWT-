@@ -21,7 +21,7 @@ function Home() {
   const categoryMenuRef = useRef(null);
 
   useEffect(() => {
-    API.get("/products")
+    API.get("/api/products")
       .then((res) => {
         setProducts(Array.isArray(res.data) ? res.data : []);
         setLoading(false);
