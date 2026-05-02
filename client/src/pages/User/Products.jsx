@@ -8,7 +8,7 @@ function Products() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    API.get("/products")
+    API.get("/api/products")
       .then((res) => {
         setProducts(Array.isArray(res.data) ? res.data : []);
         setLoading(false);
