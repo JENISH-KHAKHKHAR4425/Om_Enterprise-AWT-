@@ -11,7 +11,7 @@ function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    API.get("/products")
+    API.get("/api/products")
       .then((res) => {
         setProducts(Array.isArray(res.data) ? res.data : []);
         setLoading(false);
@@ -22,7 +22,7 @@ function AdminDashboard() {
   const confirmDelete = (id) => setDeleteId(id);
 
   const handleDelete = async () => {
-    await API.delete(`/products/${deleteId}`);
+    await API.delete(`/api/products/${deleteId}`);
     setProducts(products.filter((p) => p._id !== deleteId));
     setDeleteId(null);
   };
