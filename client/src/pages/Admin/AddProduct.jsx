@@ -15,7 +15,7 @@ function AddProduct() {
     e.preventDefault();
     setLoading(true);
     try {
-      await API.post("/products", form);
+      await API.post("/api/products", form);
       setSuccess(true);
       setTimeout(() => navigate("/admin/dashboard"), 1500);
     } catch {
