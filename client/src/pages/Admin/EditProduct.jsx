@@ -12,7 +12,7 @@ function EditProduct() {
   const [focused, setFocused] = useState(null);
 
   useEffect(() => {
-    API.get("/products").then((res) => {
+    API.get("/api/products").then((res) => {
       const product = res.data.find((p) => p._id === id);
       if (product) setForm(product);
       setLoading(false);
@@ -24,7 +24,7 @@ function EditProduct() {
   const update = async () => {
     setSaving(true);
     try {
-      await API.put(`/products/${id}`, form);
+      await API.put(`/api/products/${id}`, form);
       setSuccess(true);
       setTimeout(() => navigate("/admin/dashboard"), 1500);
     } catch {
