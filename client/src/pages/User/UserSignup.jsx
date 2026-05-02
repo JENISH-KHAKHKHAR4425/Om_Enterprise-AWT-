@@ -42,7 +42,7 @@ function UserSignup() {
 
     setLoading(true);
     try {
-      await API.post("/auth/signup", {
+      await API.post("/api/auth/signup", {
         name: form.name,
         email: form.email,
         password: form.password,
@@ -87,7 +87,7 @@ function UserSignup() {
     setError("");
     setLoading(true);
     try {
-      await API.post("/auth/verify-otp", { email: form.email, otp: code });
+      await API.post("/api/auth/verify-otp", { email: form.email, otp: code });
       setSuccess(true);
       setTimeout(() => navigate("/"), 2000);
     } catch (err) {
@@ -101,7 +101,7 @@ function UserSignup() {
     if (resendCooldown > 0) return;
     setError("");
     try {
-      await API.post("/auth/resend-otp", { email: form.email });
+      await API.post("/api/auth/resend-otp", { email: form.email });
       setOtp(["", "", "", "", "", ""]);
       setResendCooldown(60);
       otpRefs.current[0]?.focus();
